@@ -224,11 +224,16 @@ app.use("/api/auth", authRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/conversations", conversationRoute); 
 app.use("/api/messages", messageRoute);
+// Default root route for Render health check or basic response
+app.get("/", (req, res) => {
+  res.send(" Chat Together Backend is running on Render ");
+});
 
-//  Start the Server
+// Start the Server
 const PORT = process.env.PORT || 8800;
 app.listen(PORT, () => {
   console.log(` Backend Server is running on port ${PORT}`);
 });
+
 
 
